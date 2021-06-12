@@ -3,12 +3,12 @@ var treeData = {
     {
       "dob": 1920, 
       "gender": "M", 
-      "name": "Laxmayya", 
+      "name": "Laxmayya Shetty & Annapurnamma", 
       "children": [
         {
           "dob": 1940, 
           "gender": "M", 
-          "name": "Krishnamurthy", 
+          "name": "Krishnamurthy & Sushilamma", 
           "children": [
             {
               "dob": 1962, 
@@ -117,7 +117,7 @@ var treeData = {
                 {
                   "dob": 2002, 
                   "gender": "M", 
-                  "name": "Anirudh"
+                  "name": "Anirud"
                 }, 
                 {
                   "dob": 2004, 
@@ -224,7 +224,7 @@ var treeData = {
                 {
                   "dob": 2010, 
                   "gender": "F", 
-                  "name": "Sukrithi"
+                  "name": "Sukruthi"
                 }, 
                 {
                   "dob": 2013, 
