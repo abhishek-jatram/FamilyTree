@@ -5,11 +5,14 @@ import matplotlib.pyplot as plt
 class TreeRender:
   radius = 1
   def __init__(self, start_year, end_year, width):
-    fig = plt.figure(figsize=(20, 15))
+    fig_width = width / 25
+    fig = plt.figure(figsize=(fig_width, 15))
     self.ax = fig.add_subplot(111)
     plt.xlim(0, width+10)
     plt.xticks([])
     plt.ylim(end_year + 5, start_year - 5)
+    plt.ylabel("Date of Birth")
+    fig.tight_layout()
 
   def node(self, x, y, info):
     x *= 1
@@ -43,7 +46,7 @@ class FamilyTree:
       parent_id = int(parent_id)
       dob = int(dob)
       if(id in self.data.keys()):
-        sys.exit('Duplicate IDs found. Please recheck the data file')
+        sys.exit('Duplicate IDs({}) found. Please recheck the data file'.format(id))
 
       self.data[id] = dict()
       self.data[id]['name'] = name
@@ -79,17 +82,20 @@ class FamilyTree:
     return pprint.pformat(self.data) + '\n' + pprint.pformat(self.tree)
 
   def post_order_traversal(self, node_id, dist, dist_of):
+    d_unit = 20
+
     if(node_id not in self.tree.keys()): #is a leaf node
-      dist += 20
+      dist += d_unit
       dist_of[node_id] = dist 
       return dist
     else:
       width = 0
       for child_id in self.tree[node_id]:
         child_dist = self.post_order_traversal(child_id, dist + width, dist_of)
+        prev_id = child_id
         width = child_dist - dist
       if len(self.tree[node_id]) > 1:
-        dist_of[node_id] = dist + 10 + width / 2 
+        dist_of[node_id] = dist + d_unit / 2 + width / 2 
       else:
         dist_of[node_id] = dist + width
       return dist + width
@@ -128,7 +134,9 @@ class FamilyTree:
           # x = p * position[id][0] + (1.0 - p) * position[child_id][0]
           # y = p * position[id][1] + (1.0 - p) * position[child_id][1]
           # render.text(x,y,i+1)
-    plt.show()
+    plt.savefig('figure_full.png', bbox_inches='tight')
+    #plt.show()
+
 
 if __name__ == '__main__':
   ftree = FamilyTree('data.csv')
