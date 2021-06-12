@@ -3,7 +3,7 @@ var treeData = {
     {
       "dob": 1920, 
       "gender": "M", 
-      "name": "Laxmayya", 
+      "name": "Laxmayya Shetty", 
       "children": [
         {
           "dob": 1940, 
@@ -117,7 +117,7 @@ var treeData = {
                 {
                   "dob": 2002, 
                   "gender": "M", 
-                  "name": "Anirudh"
+                  "name": "Anirud"
                 }, 
                 {
                   "dob": 2004, 
@@ -224,7 +224,7 @@ var treeData = {
                 {
                   "dob": 2010, 
                   "gender": "F", 
-                  "name": "Sukrithi"
+                  "name": "Sukruthi"
                 }, 
                 {
                   "dob": 2013, 
