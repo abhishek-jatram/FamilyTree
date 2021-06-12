@@ -144,7 +144,10 @@ function update(source) {
 
   // Update the node attributes and style
   nodeUpdate.select('circle.node')
-    .attr('r', 10)
+    // .attr('r', 10)
+    .attr('r', function(d){
+        return Math.max(10, Math.pow(2, (2100 - d.data.dob) / 30));
+    })
     .style("fill", function(d) {
         // return d._children ? "lightsteelblue" : "#fff";
         return d._children ? (d.data.gender == "F" ? "pink" : "lightskyblue") : "#fff";

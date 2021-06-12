@@ -8,6 +8,7 @@ def pre_order_traversal(node_id):
     if node_id in ftree.data.keys():
         node_data['name'] = ftree.data[node_id]['name']
         node_data['gender'] = ftree.data[node_id]['gender']
+        node_data['dob'] = ftree.data[node_id]['dob']
     
     if node_id in ftree.tree.keys():
         node_data['children'] = list()
