@@ -70,23 +70,6 @@ var treeData = {
             }, 
             {
               "dob": 1972, 
-              "gender": "F", 
-              "name": "Laxmi", 
-              "children": [
-                {
-                  "dob": 2000, 
-                  "gender": "F", 
-                  "name": "Sravani"
-                }, 
-                {
-                  "dob": 2003, 
-                  "gender": "F", 
-                  "name": "Sirisha"
-                }
-              ]
-            }, 
-            {
-              "dob": 1974, 
               "gender": "M", 
               "name": "Prakash", 
               "children": [
@@ -99,6 +82,23 @@ var treeData = {
                   "dob": 2006, 
                   "gender": "F", 
                   "name": "Neha"
+                }
+              ]
+            }, 
+            {
+              "dob": 1974, 
+              "gender": "F", 
+              "name": "Laxmi", 
+              "children": [
+                {
+                  "dob": 2000, 
+                  "gender": "F", 
+                  "name": "Sravani"
+                }, 
+                {
+                  "dob": 2003, 
+                  "gender": "F", 
+                  "name": "Sirisha"
                 }
               ]
             }
