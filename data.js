@@ -3,7 +3,7 @@ var treeData = {
     {
       "dob": 1920, 
       "gender": "M", 
-      "name": "Laxmiah", 
+      "name": "Laxmayya", 
       "children": [
         {
           "dob": 1940, 
