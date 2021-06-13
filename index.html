@@ -9,7 +9,7 @@
 }
 
 .node text {
-  font: 24px sans-serif;
+  font: 20px sans-serif;
 }
 
 .link {
@@ -45,7 +45,7 @@
 // Set the dimensions and margins of the diagram
 var margin = {top: 20, right: 90, bottom: 30, left: 90},
     width = 1080 - margin.left - margin.right,
-    height = 720 - margin.top - margin.bottom;
+    height = 1080 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 // appends a 'group' element to 'svg'
@@ -53,7 +53,7 @@ var margin = {top: 20, right: 90, bottom: 30, left: 90},
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+    .append("g")
     .attr("transform", "translate("
           + margin.left + "," + margin.top + ")");
 
@@ -123,14 +123,21 @@ function update(source) {
 
   // Add labels for the nodes
   nodeEnter.append('text')
-      .attr("dy", ".35em")
+      .attr("dy", "0.35em")
       .attr("x", function(d) {
-          return d.children || d._children ? -13 : 13;
+          var scale = Math.max(10, Math.pow(2, (2100 - d.data.dob) / 30))/13;
+          return d.children || d._children ? -15 * scale : 15 * scale;
       })
       .attr("text-anchor", function(d) {
           return d.children || d._children ? "end" : "start";
+        //   return "middle"
       })
-      .text(function(d) { return d.data.name; });
+      .text(function(d) {
+           return d.data.name; 
+        })
+        .each(function(d) {
+  	  	 calculateTextWrap(this,d);
+  		});
 
   // UPDATE
   var nodeUpdate = nodeEnter.merge(node);
@@ -154,6 +161,8 @@ function update(source) {
     })
     .attr('cursor', 'pointer');
 
+  nodeUpdate.select('text')
+    .attr('font', '8px sans-serif')
 
   // Remove any exiting nodes
   var nodeExit = node.exit().transition()
@@ -230,6 +239,50 @@ function update(source) {
       }
     update(d);
   }
+
+  function calculateTextWrap(element, data) {
+        var text = d3.select(element);
+        var stext = text.node().getComputedTextLength();
+        // var text = data
+        if (text.node().getComputedTextLength() < 1) {
+            //console.log("No need to wrap");
+        } else {
+            var words = text.text().split("&").reverse(),
+                word,
+                line = [],
+                lineNumber = 0,
+                lineHeight = 1, // ems
+                y = words.length > 1 ? -8 : text.attr("y"),
+                x = text.attr("x"),
+                anchor = text.attr("text-anchor")
+                dy = parseFloat(0.35),
+
+            tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
+            tspan.text(words.pop());
+            while(word = words.pop()){
+                tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", lineHeight + dy + "em")
+                tspan.attr("fill","#777777")
+                tspan.attr("font-size","16px")
+                tspan.text(word);
+                lineHeight++;
+            }
+            // while (word = words.pop()) {
+            //     line.push(word);
+            //     tspan.text(line.join(""));
+            //     if (tspan.node().getComputedTextLength() > 10) {
+            //         lineNumber++;
+            //         line.pop();
+            //         tspan.text(line.join(""));
+            //         line = [word];
+            //         // tspan = text.append("tspan").attr("text-anchor", "start").attr("x", 5).attr("y", y).attr("dy", lineHeight + dy + "em").text(word);
+            //         tspan = text.append("tspan").attr("text-anchor", "middle").attr("x", 0).attr("y", y).attr("dy", lineHeight + dy + "em").text(word);
+            //     }
+            // }
+        }
+        var rectHeight = text.node().getBBox().height;
+        if(rectHeight < 30) rectHeight = 30;
+        data.rectHeight = rectHeight + 10 ;
+    };
 }
 
 </script>
