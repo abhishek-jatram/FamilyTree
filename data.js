@@ -3,22 +3,22 @@ var treeData = {
     {
       "dob": 1920, 
       "gender": "M", 
-      "name": "Laxmayya Shetty&Annapurnamma", 
+      "name": "Laxmayya Shetty & Annapurnamma", 
       "children": [
         {
           "dob": 1940, 
           "gender": "M", 
-          "name": "Krishnamurthy&Sushilamma", 
+          "name": "Krishnamurthy & Sushilamma", 
           "children": [
             {
               "dob": 1962, 
               "gender": "M", 
-              "name": "Padmaraj&Vidhya", 
+              "name": "Padmaraj & Vidhya", 
               "children": [
                 {
                   "dob": 1994, 
                   "gender": "M", 
-                  "name": "Akshay&Sushmitha", 
+                  "name": "Akshay & Sushmitha", 
                   "children": [
                     {
                       "dob": 2020, 
@@ -30,14 +30,14 @@ var treeData = {
                 {
                   "dob": 1996, 
                   "gender": "M", 
-                  "name": "Akhil&Maheshwari"
+                  "name": "Akhil & Maheshwari"
                 }
               ]
             }, 
             {
               "dob": 1966, 
               "gender": "M", 
-              "name": "Vasudev&Surekha", 
+              "name": "Vasudev & Surekha", 
               "children": [
                 {
                   "dob": 1998, 
@@ -54,7 +54,7 @@ var treeData = {
             {
               "dob": 1969, 
               "gender": "M", 
-              "name": "Prakash&Rekha", 
+              "name": "Prakash & Rekha", 
               "children": [
                 {
                   "dob": 2003, 
@@ -71,7 +71,7 @@ var treeData = {
             {
               "dob": 1972, 
               "gender": "F", 
-              "name": "Annapurna&Satyanarayana", 
+              "name": "Annapurna & Satyanarayana", 
               "children": [
                 {
                   "dob": 1994, 
@@ -88,7 +88,7 @@ var treeData = {
             {
               "dob": 1974, 
               "gender": "F", 
-              "name": "Laxmi&Ramesh", 
+              "name": "Laxmi & Ramesh", 
               "children": [
                 {
                   "dob": 2000, 
@@ -107,12 +107,12 @@ var treeData = {
         {
           "dob": 1945, 
           "gender": "M", 
-          "name": "Venkatesh&Prabhavathi", 
+          "name": "Venkatesh & Prabhavathi", 
           "children": [
             {
               "dob": 1969, 
               "gender": "M", 
-              "name": "Govindraj&Pushpa", 
+              "name": "Govindraj & Pushpa", 
               "children": [
                 {
                   "dob": 2002, 
@@ -129,7 +129,7 @@ var treeData = {
             {
               "dob": 1971, 
               "gender": "F", 
-              "name": "Laxmi&Venkatesh", 
+              "name": "Laxmi & Venkatesh", 
               "children": [
                 {
                   "dob": 2000, 
@@ -153,7 +153,7 @@ var treeData = {
         {
           "dob": 1950, 
           "gender": "F", 
-          "name": "Padmavathi&Vijay Kumar", 
+          "name": "Padmavathi & Vijay Kumar", 
           "children": [
             {
               "dob": 1973, 
@@ -175,7 +175,7 @@ var treeData = {
         {
           "dob": 1956, 
           "gender": "F", 
-          "name": "Vijayamma&Panduranga", 
+          "name": "Vijayamma & Panduranga", 
           "children": [
             {
               "dob": 1982, 
@@ -197,12 +197,12 @@ var treeData = {
         {
           "dob": 1961, 
           "gender": "M", 
-          "name": "Srinivas&Varalakshmi", 
+          "name": "Srinivas & Varalakshmi", 
           "children": [
             {
               "dob": 1987, 
               "gender": "M", 
-              "name": "Deepak&Santhoshi", 
+              "name": "Deepak & Santhoshi", 
               "children": [
                 {
                   "dob": 2012, 
@@ -219,7 +219,7 @@ var treeData = {
             {
               "dob": 1990, 
               "gender": "F", 
-              "name": "Annapurna&Sudham", 
+              "name": "Annapurna & Sudham", 
               "children": [
                 {
                   "dob": 2010, 
@@ -238,7 +238,7 @@ var treeData = {
         {
           "dob": 1964, 
           "gender": "F", 
-          "name": "Meenakshi&Hanumesh", 
+          "name": "Meenakshi & Hanumesh", 
           "children": [
             {
               "dob": 1987, 
@@ -260,7 +260,7 @@ var treeData = {
         {
           "dob": 1966, 
           "gender": "M", 
-          "name": "Ananth&Rani", 
+          "name": "Ananth & Rani", 
           "children": [
             {
               "dob": 1993, 
@@ -270,7 +270,7 @@ var treeData = {
             {
               "dob": 1995, 
               "gender": "F", 
-              "name": "Shravya&Sharath"
+              "name": "Shravya & Sharath"
             }
           ]
         }

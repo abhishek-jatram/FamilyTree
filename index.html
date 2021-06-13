@@ -125,8 +125,9 @@ function update(source) {
   nodeEnter.append('text')
       .attr("dy", "0.35em")
       .attr("x", function(d) {
-          var scale = Math.max(10, Math.pow(2, (2100 - d.data.dob) / 30))/13;
-          return d.children || d._children ? -15 * scale : 15 * scale;
+          var scale = getCircleRadius(d) + 2;
+        //   scale = Math.max(4, scale);
+          return d.children || d._children ? -1.1 * scale : 1.1 * scale;
       })
       .attr("text-anchor", function(d) {
           return d.children || d._children ? "end" : "start";
@@ -153,7 +154,7 @@ function update(source) {
   nodeUpdate.select('circle.node')
     // .attr('r', 10)
     .attr('r', function(d){
-        return Math.max(10, Math.pow(2, (2100 - d.data.dob) / 30));
+        return getCircleRadius(d);
     })
     .style("fill", function(d) {
         // return d._children ? "lightsteelblue" : "#fff";
@@ -240,6 +241,11 @@ function update(source) {
     update(d);
   }
 
+  function getCircleRadius(d){
+    // return Math.max(10, Math.pow(2, (2100 - d.data.dob) / 30));
+    return Math.max(1, (new Date().getFullYear() - d.data.dob)/2);
+  }
+
   function calculateTextWrap(element, data) {
         var text = d3.select(element);
         var stext = text.node().getComputedTextLength();
@@ -258,12 +264,12 @@ function update(source) {
                 dy = parseFloat(0.35),
 
             tspan = text.text(null).append("tspan").attr("y", y).attr("dy", dy + "em");
-            tspan.text(words.pop());
+            tspan.text(words.pop().trim());
             while(word = words.pop()){
                 tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", lineHeight + dy + "em")
                 tspan.attr("fill","#777777")
                 tspan.attr("font-size","16px")
-                tspan.text(word);
+                tspan.text(word.trim());
                 lineHeight++;
             }
             // while (word = words.pop()) {
