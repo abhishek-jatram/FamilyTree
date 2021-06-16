@@ -43,7 +43,7 @@
 //   };
 
 // Set the dimensions and margins of the diagram
-var margin = {top: 20, right: 90, bottom: 30, left: 90},
+var margin = {top: 20, right: 90, bottom: 30, left: 120},
     width = 1080 - margin.left - margin.right,
     height = 1080 - margin.top - margin.bottom;
 
@@ -84,7 +84,6 @@ function collapse(d) {
 }
 
 function update(source) {
-
   // Assigns the x and y position for the nodes
   var treeData = treemap(root);
 
@@ -93,7 +92,12 @@ function update(source) {
       links = treeData.descendants().slice(1);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d){ d.y = d.depth * 180});
+//   nodes.forEach(function(d){ d.y = d.depth * 180});
+  depth_max = nodes.map(d => {return d.depth}).reduce((a,b) => a = Math.max(a,b))
+  let scale = Math.max(2, 15 - depth_max);
+  nodes.forEach(function(d){ d.y = d.depth * scale * 15});
+  // y position based on age
+//   nodes.forEach(function(d){ d.y = (d.data.dob - 1900) * scale/2});
 
   // ****************** Nodes section ***************************
 
