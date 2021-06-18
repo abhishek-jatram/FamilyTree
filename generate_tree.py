@@ -6,11 +6,14 @@ class TreeRender:
   radius = 1
   def __init__(self, start_year, end_year, width):
     fig_width = width / 25
-    fig = plt.figure(figsize=(fig_width, 15))
+    end_year += 5
+    start_year -= 5
+    fig = plt.figure(figsize=(fig_width, 10))
     self.ax = fig.add_subplot(111)
-    plt.xlim(0, width+10)
+    plt.xlim(-10, width+10)
     plt.xticks([])
-    plt.ylim(end_year + 5, start_year - 5)
+    plt.ylim(end_year, start_year)
+    plt.yticks(range(start_year,end_year+1, 5))
     plt.ylabel("Date of Birth")
     fig.tight_layout()
 
@@ -83,22 +86,20 @@ class FamilyTree:
 
   def post_order_traversal(self, node_id, dist, dist_of):
     d_unit = 20
-
+    d_scale = 1
+    node_width = len(self.data[node_id]["name"]) * d_scale if node_id else 0
     if(node_id not in self.tree.keys()): #is a leaf node
-      dist += d_unit
-      dist_of[node_id] = dist 
+      dist += node_width
+      dist_of[node_id] = dist
+      dist += node_width + d_unit
       return dist
     else:
-      width = 0
+      child_dist = dist
       for child_id in self.tree[node_id]:
-        child_dist = self.post_order_traversal(child_id, dist + width, dist_of)
-        prev_id = child_id
-        width = child_dist - dist
-      if len(self.tree[node_id]) > 1:
-        dist_of[node_id] = dist + d_unit / 2 + width / 2 
-      else:
-        dist_of[node_id] = dist + width
-      return dist + width
+        child_dist = self.post_order_traversal(child_id, child_dist, dist_of)
+
+      dist_of[node_id] = (dist_of[self.tree[node_id][0]] + dist_of[self.tree[node_id][-1]] ) / 2
+      return max(child_dist, dist + node_width + d_unit)
 
   def get_node_positions(self):
     dist_of = dict()
@@ -115,9 +116,6 @@ class FamilyTree:
     for id in ids:
       start_year = min(start_year, self.data[id]['dob'])
       end_year   = max(end_year, self.data[id]['dob'])
-
-    # for t in range(start_year, end_year):
-    #   render.text(2, t, str(t))
       
     position,width = self.get_node_positions()
     render = TreeRender(start_year, end_year, width)
